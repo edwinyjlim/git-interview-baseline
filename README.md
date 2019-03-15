@@ -1,6 +1,32 @@
 # Git Collaboration
 
+```diff
+- my overall notes & thoughts
++ the README is part tutorial, part lesson. It's got a lot of shifting goals.
++ needs more illustrative and concise examples to describe git. The documentation sort of uses "timelines" already as an analogy. 
++ the diagrams or graphs of branches are inconsistent and misleading.
++ too verbose at times. Sections should be simplified and pared-down. 
++ could benefit from a glossary of terms and git commands.
++ can't rewrite everything, need to solve the biggest problem which is an inconsistent and confusing example about merges.
+```
+
+```diff
+- core concepts
++ local branches, master vs. others
++ working on separate branches
++ merging work into master branch
++ remote branches, how to fetch, merge and pull
+```
+
+
 ## Objectives
+
+```diff
+- notes on this section
++ the objectives would be better defined by git concepts rather than git commands
++ each objective should anchor link to the corresponding section
++ needs to address what the reader already knows first. Do they know anything about git at all? How to stage and commit changes? What are the assumptions about our reader?
+```
 
 1. Make a new branch for your repository with `git branch`.
 2. Checkout a branch with `git checkout`.
@@ -12,6 +38,14 @@
 8. Update and merge remote branches with `git pull`.
 
 ## Overview
+
+```diff
+- notes on this section
++ needs to first establish the problem git solves at a higher level. Answer the question "Why should do we care about collaborative git and this README at all?". Big picture reasons. 
++ The bug example is fine, but it's really specific. Branches are not about hot fixes, but about enabling collaboration between ideas and people.
++ The hot fix example is okay, but could be summed up more concisely.
++ what is the big conceptual takeaway in simple language? 
+```
 
 A key to collaborating with git is to keep discrete and individual lines of work isolated from each other. Consider the following scenario.
 
@@ -37,6 +71,14 @@ fbee832 Started new-feature (aviflombaum, 2 days ago)
 See, we can't push all those commits. Wouldn't it have been great if we simply isolated our work on new-feature into its own copy of our code so that until it's done, we could have deployed the commit that fixes the application? We can do exactly this using a feature in git called branches.
 
 ## Making a branch with `git branch`
+
+```diff
+-notes on this section
++ the organization is messy. Some of the diagrams show commits that the tutorial steps haven't reached
++ too much context shifting between master and new-feature branch
++ needs to be edited down and split up
++ two separate sections: create/checkout branches & working in branches
+```
 
 Let's quickly make a repository that we can use as a sandbox to experiment with the collaborative features of git. You don't have to follow along, you'll be able to understand the concepts from the reading but if you'd like, you can copy and paste these commands locally.
 
@@ -223,6 +265,14 @@ The final step of our `new-feature` work sprint is to figure out how to merge th
 
 ## Merging branches with `git merge`
 
+
+```diff
+- notes on this section
++ doesn't explain merge commits or conflicts.
++ it shouldn't be a fast-forward from the previous steps.
++ the graph is not quite right since it doesn't cover the merge commit. The "timeline" of commits is technically correct, but if the reader merges and is prompted with a commit or git log --graph they will be confused.
+```
+
 Our goal is to bring the timeline of commits that occurred on the `new-feature` branch into the `master` so that at the end of the operation, our `master` timeline looks like:
 
 ![Merged Timeline](https://dl.dropboxusercontent.com/s/bf0cktf3ag549z2/2015-11-02%20at%201.15%20PM.png)
@@ -250,6 +300,14 @@ Fast-forward
 Now the branches have been merged and if you `ls`, you'll see the `new-feature` file from the `new-feature` branch in your current working directory that is checked out to master.
 
 ## Working with remote branches with `git fetch` and `git pull`
+
+
+```diff
+- notes on this section
++ where did this remote repo come from? How do readers who are following the commandline steps fetch a remote repo they haven't added? What if the permissions change?
++ The tutorial part falls apart here. Maybe focus on the conceptual understanding instead. 
++ this example gets too lost in the weeds. Clarity is more important than pointing out every detail.
+```
 
 Your local branches can attach to remote branches that live on the internet, generally on GitHub, that your team members might contribute to and you can download locally.
 
@@ -320,6 +378,13 @@ When you `git pull` the following things will occur:
 2. Any changes that are on a remote branch which is being tracked by your local branch, that is to say, if you are on `master` and there is a change to `origin/master`, those changes will be automatically merged.
 
 ## Conclusion
+
+```diff
+- notes on this section
++ the conclusion begets a quick summary of the important takeaways.
++ it's good that we remind the reader that implementation is difficult and takes practice. Hopefully, conceptual understanding has begun. 
++ always a relevant xkcd.
+```
 
 Git is complex, and collaborating with people in this matter is just hard - there's no easy way to allow 100s of people to all work on the same code base. These workflows are just being introduced to you.  You'll have lots of time to practice them and memorize what each command does. Don't try to learn it all at once; instead just start to get an understanding of what's what.
 
