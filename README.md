@@ -34,6 +34,7 @@ By making distinct working versions of a codebase, `branches` encourage engineer
 
 You should already be familiar with commits and basic commands like `git init`, `git add`, `git commit`, `git log`. If not, you should take some time to learn or review those first before continuing to read about the following objectives: 
 
+1. [A common scenario](#A-common-scenario) 
 1. [Make a new branch for your repository with `git branch`]()
 2. [Checkout a branch with `git checkout`.]()
 3. [Create and checkout a new branch with `git checkout -b`.]()
@@ -43,29 +44,11 @@ You should already be familiar with commits and basic commands like `git init`, 
 7. [Merge updated remote branches with `git merge`.]()
 8. [Update and merge remote branches with `git pull`.]()
 
-## Overview
+## A common scenario
 
-```diff
-- notes on this section
-+ needs to first establish the problem git solves at a higher level. Answer the question "Why should do we care about collaborative git and this README at all?". Big picture reasons. 
-+ The bug example is fine, but it's really specific. Branches are not about hot fixes, but about enabling collaboration between ideas and people.
-+ The hot fix example is okay, but could be summed up more concisely.
-+ what is the big conceptual takeaway in simple language? 
-```
+Consider the following scenario.
 
-A key to collaborating with git is to keep discrete and individual lines of work isolated from each other. Consider the following scenario.
-
-You start work on a big feature, making a few commits that don't entirely finish the feature. Your git log might look like:
-
-```
-512bec5 Still broken, working on new-feature (aviflombaum, 2 hours ago)
-62d840 Almost done with new-feature (aviflombaum, 1 day ago)
-fbee832 Started new-feature (aviflombaum, 2 days ago)
-```
-
-Two days ago we started working on our new-feature. Yesterday we were almost done. Today we made progress, but it's still broken. In our current state, if we had to push the repository live and deploy the latest version of our code to production, our users would see a half-finished, currently broken new-feature. That's no good.
-
-But no big deal, right? We can just wait until we're done with new-feature to deploy our code and push the repository live to our users. Here's what happens though. We notice a big bug that is currently breaking the application for all users. The bug is an easy fix, one simple change and deploy of your code can make everything work again. Unfortunately, even if you made that commit, you can't currently deploy it because while that commit might fix the bug, you'd still be pushing your half-finished and broken new-feature.
+We start work on a big new feature, making a few commits that don't entirely finish the feature leaving it half-working, or completely broken as some would say. Here's what happens though. We suddenly notice a big unrelated bug that is currently breaking the application for all users. So we take a break from working on the new feature to fix the bug. Your `git log` might look like this:
 
 ```
 r4212d1 Fix to application breaking bug (aviflombaum, just now)
@@ -74,7 +57,10 @@ r4212d1 Fix to application breaking bug (aviflombaum, just now)
 fbee832 Started new-feature (aviflombaum, 2 days ago)
 ```
 
-See, we can't push all those commits. Wouldn't it have been great if we simply isolated our work on new-feature into its own copy of our code so that until it's done, we could have deployed the commit that fixes the application? We can do exactly this using a feature in git called branches.
+See the dilemma? We can't deploy to production, because our fix commit is connected to the broken feature commits. That's no good. We need the ability to work on new features and bug fixes independently. 
+
+`git` solves this dilemma by keeping `branches`, discrete and individual lines of work, isolated from each other. Now let's demonstrate how.
+
 
 ## Making a branch with `git branch`
 
