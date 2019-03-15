@@ -39,7 +39,7 @@ You should already be familiar with commits and basic commands like `git init`, 
 3. [The Golden Rule](#The-Golden-Rule)
 4. [Create branches and checkout branches](#Create-branches-and-checkout-branches)
 5. [Working in different branches](#Working-in-different-branches)
-6. [Merge branches with `git merge`.]()
+6. [Merging branches](#Merging-branches)
 7. [Update branches from remotes with `git fetch`.]()
 8. [Merge updated remote branches with `git merge`.]()
 9. [Update and merge remote branches with `git pull`.]()
@@ -194,62 +194,25 @@ Let's look at our series of branches and timelines now.
 Notice the *branching* tree like structure in the graph -- how the timelines begin to split. You could describe `master` as being 1 commit ahead of the `new-feature` branch because it doesn't have the second bug fix commit. 
 
 
-## Confusing part begins here. Need to edit it down somehow. 
+## Merging branches
 
-Let's go back into `new-feature` and complete the feature and commit it and then look at the timeline. Remember how to move from `master` back to `new-feature`?
+Our goal is to bring the timeline of commits that occurred on the `new-feature` branch into the `master` so that at the end of the operation, our `master` timeline looks effectively like:
 
-```
-mission-critical-application $ git status
-On branch master
-nothing to commit, working directory clean
-mission-critical-application $ git checkout new-feature
-Switched to branch 'new-feature'
-```
+![Merged Timeline](fixed-graph.png)
 
-Let's rename `new-feature-file` to `new-feature` to signify the code we wrote to complete the feature and commit this change. We can rename a file with `mv <original filename> <new filename>` BASH command.
+By merging the timelines, `master` will have all of the commits from the `new-feature` branch. 
 
-```
-mission-critical-application $ mv new-feature-file new-feature
-mission-critical-application $ git add new-feature
-mission-critical-application $ git commit -m "Finished feature"
-[new-feature bfe50fc] Finished feature
- 1 file changed, 0 insertions(+), 0 deletions(-)
- create mode 100644 new-feature
-```
-
-Let's look at our timeline now.
-
-![Completed Feature Branch](https://dl.dropboxusercontent.com/s/xtoehu7tv5zim6v/2015-11-02%20at%2012.31%20PM.png)
-
-The final step of our `new-feature` work sprint is to figure out how to merge that timeline into the master timeline.
-
-## Merging branches with `git merge`
-
-
-```diff
-- notes on this section
-+ doesn't explain merge commits or conflicts.
-+ it shouldn't be a fast-forward from the previous steps.
-+ the graph is not quite right since it doesn't cover the merge commit. The "timeline" of commits is technically correct, but if the reader merges and is prompted with a commit or git log --graph they will be confused.
-```
-
-Our goal is to bring the timeline of commits that occurred on the `new-feature` branch into the `master` so that at the end of the operation, our `master` timeline looks like:
-
-![Merged Timeline](https://dl.dropboxusercontent.com/s/bf0cktf3ag549z2/2015-11-02%20at%201.15%20PM.png)
-
-By merging the timelines, `master` will have all of the commits from the `new-feature` branch as though those events occured on the `master` timeline.
-
-When we merge a branch with `git merge`, it's important to be currently working on your target branch, the branch you want to move into. The first step for our `new-feature` merge is to checkout `master` because that is where we want the commits to end up.
+When we merge a branch with `git merge`, it's important to be currently working on your target branch, the branch you want to the commits to end up in. The first step for our `new-feature` merge is to checkout `master`.
 
 ```
 mission-critical-application $ git checkout master
 Switched to branch 'master'
 ```
 
-Once on your target branch, type: `git merge <branch name>` where `<branch name>` is the branch we want to merge. In this case, `git merge new-feature` will do the trick.
+Once on your target branch, type: `git merge <branch name> -m <commit message>` where `<branch name>` is the branch we want to pull in commits from. It will create another commit to record the merge, which you should describe with a message.  
 
 ```
-mission-critical-application $ git merge new-feature
+mission-critical-application $ git merge new-feature -m "new-feature merge"
 Updating e5830af..bfe50fc
 Fast-forward
  new-feature      | 0
@@ -257,7 +220,9 @@ Fast-forward
  create mode 100644 new-feature
 ```
 
-Now the branches have been merged and if you `ls`, you'll see the `new-feature` file from the `new-feature` branch in your current working directory that is checked out to master.
+Now the branches have been merged and if you `ls`, you'll see the `new-feature` file from the `new-feature` branch in your current working directory that is checked out to `master`.
+
+
 
 ## Working with remote branches with `git fetch` and `git pull`
 
