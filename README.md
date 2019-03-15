@@ -19,23 +19,29 @@
 ```
 
 
+## The Big Picture
+
+`git` is powerful. So powerful, in fact, that it allows different people with different ideas to work on the same project. You could be the CTO of a global fleet of software engineers or someone with a couple of different ideas about a site for cat facts; `git` is the universal solution for any codebase that has multiple needs and ideas without sacrificing productivty.
+
+The `git` feature that makes this all possible: `branches`. 
+
+### So what do `branches` really do?
+
+By making distinct working versions of a codebase, `branches` encourage engineers to make mistakes, experiment, and even collaborate with others on the same project -- which makes `git` a form of science, art, and self-defense. 
+
+
 ## Objectives
 
-```diff
-- notes on this section
-+ the objectives would be better defined by git concepts rather than git commands
-+ each objective should anchor link to the corresponding section
-+ needs to address what the reader already knows first. Do they know anything about git at all? How to stage and commit changes? What are the assumptions about our reader?
-```
+You should already be familiar with commits and basic commands like `git init`, `git add`, `git commit`, `git log`. If not, you should take some time to learn or review those first before continuing to read about the following objectives: 
 
-1. Make a new branch for your repository with `git branch`.
-2. Checkout a branch with `git checkout`.
-3. Create and checkout a new branch with `git checkout -b`.
-4. Create commits within a branch.
-5. Merge branches with `git merge`.
-6. Update branches from remotes with `git fetch`.
-7. Merge updated remote branches with `git merge`.
-8. Update and merge remote branches with `git pull`.
+1. [Make a new branch for your repository with `git branch`]()
+2. [Checkout a branch with `git checkout`.]()
+3. [Create and checkout a new branch with `git checkout -b`.]()
+4. [Create commits within a branch.]()
+5. [Merge branches with `git merge`.]()
+6. [Update branches from remotes with `git fetch`.]()
+7. [Merge updated remote branches with `git merge`.]()
+8. [Update and merge remote branches with `git pull`.]()
 
 ## Overview
 
