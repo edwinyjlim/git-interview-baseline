@@ -36,7 +36,7 @@ You should already be familiar with commits and basic commands like `git init`, 
 
 1. [A common scenario](#A-common-scenario) 
 1. [The `master` branch](#the-master-branch)
-2. [Checkout a branch with `git checkout`.]()
+2. [The Golden Rule](#The-Golden-Rule)
 3. [Create and checkout a new branch with `git checkout -b`.]()
 4. [Create commits within a branch.]()
 5. [Merge branches with `git merge`.]()
@@ -104,7 +104,12 @@ Right now our `git log` could be visualized as a timeline composed of two commit
 
 Whenever you are working on commits in git, you are adding them on a timeline of code called a branch. The branch you are on by default at the start of any repository, your main timeline, the main branch is called `master`. The command `git init` create it for you. 
 
-The `master` git branch is our default branch. One of the responsible ways to use git is to make sure that the `master` branch is always clean with working code so that if we ever need to add a bug fix, we can do it and deploy a new version of the application immediately. We don't put broken code in master so that we can always deploy master.
+
+## The Golden Rule
+
+The `master` git branch is our default branch. As a rule, software engineers make sure that the `master` branch is always clean with working code. We only commit fixes and complete features so that we can always deploy `master`.
+
+The rule is an agreement that `master` should always be the official working version of our app.
 
 ### Starting a new feature with `git branch new-feature`
 
